@@ -4,7 +4,7 @@ public:
         int index_max=1;
         int maxNum=INT_MIN;
         int temp=num;
-        vector<int> index_min_arr;
+        int index_min=0;
         vector<int> index_max_arr;
         int counter=0;
         
@@ -14,26 +14,19 @@ public:
                 maxNum=temp%10;
                index_max_arr.push_back(counter);
             }
- 
-            if(temp%10<maxNum){
-               index_min_arr.push_back(counter);
-            }
-           
+            else if (temp%10<maxNum) index_min=counter;
             temp/=10;
         }
-        
-     if(index_min_arr.empty())return num;
-
+    
      for(auto maxNo:index_max_arr){
-        if(maxNo>index_min_arr[index_min_arr.size() - 1]) break;
+        if(maxNo>index_min) break;
         index_max=maxNo;
      }
 
-    if (index_max< index_min_arr[index_min_arr.size() - 1]) {
+    if (index_max< index_min) {
             string numStr=to_string(num);
-            swap(numStr[numStr.size()-index_max], numStr[numStr.size()-index_min_arr[index_min_arr.size()-1]]);
+            swap(numStr[numStr.size()-index_max], numStr[numStr.size()-index_min]);
             return stoi(numStr);
-
         }
         return num;
     }
