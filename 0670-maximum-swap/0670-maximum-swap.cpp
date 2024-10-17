@@ -2,10 +2,10 @@ class Solution {
 public:
     int maximumSwap(int num) {
         int index_max=1;
-        int maxNum=INT_MIN;
-        int temp=num;
         int index_min=0;
         vector<int> index_max_arr;
+        int maxNum=INT_MIN;
+        int temp=num;
         int counter=0;
         
         while(temp){
@@ -28,6 +28,6 @@ public:
             swap(numStr[numStr.size()-index_max], numStr[numStr.size()-index_min]);
             return stoi(numStr);
         }
-        return num;
+    return num;
     }
 };
